@@ -1,0 +1,41 @@
+{
+  "navigation": {
+    "header": {
+      "logo": "Daniel Bolaños",
+      "menu": "Open navigation menu",
+      "close": "Close navigation menu",
+      "language": "Change language",
+      "theme": "Change theme",
+      "light": "Light theme",
+      "dark": "Dark theme",
+      "system": "System theme"
+    },
+    "items": {
+      "hero": "Home",
+      "about": "About",
+      "skills": "Skills",
+      "experience": "Experience",
+      "projects": "Projects"
+    },
+    "footer": {
+      "note": "Fullstack developer portfolio.",
+      "status": "Built with Next.js"
+    }
+  },
+  "home": {
+    "eyebrow": "Daniel Bolaños · Software Developer",
+    "title": "Building quality web applications from idea to polished experience.",
+    "description": "I develop thoughtful interfaces, backend services and data flows with JavaScript, React, Express and SQL databases, with attention to design, stability and technical detail.",
+    "primaryAction": "View experience",
+    "primaryHref": "#experience",
+    "secondaryAction": "Switch to Spanish",
+    "contactAction": "Contact me",
+    "visualLabel": "Technical visual showing portfolio focus areas",
+    "stack": {
+      "next": "Next.js",
+      "typescript": "TypeScript",
+      "node": "Node.js",
+      "data": "PostgreSQL"
+    }
+  }
+}

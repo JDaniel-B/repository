@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --background: #fafafa;
+  --foreground: #18181b;
+  --card: rgba(255, 255, 255, 0.82);
+  --card-foreground: #18181b;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --secondary: rgba(244, 244, 245, 0.86);
+  --secondary-foreground: #27272a;
+  --muted: rgba(244, 244, 245, 0.82);
+  --muted-foreground: #71717a;
+  --accent: #52525b;
+  --accent-foreground: #fafafa;
+  --border: rgba(39, 39, 42, 0.12);
+  --ring: #2563eb;
+  --page-tint: rgba(39, 39, 42, 0.035);
+  --page-line: rgba(39, 39, 42, 0.07);
+  --surface-glow: rgba(37, 99, 235, 0.12);
+  --shadow-soft: 0 18px 48px rgba(24, 24, 27, 0.08);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --shadow-soft: var(--shadow-soft);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+.dark {
+  color-scheme: dark;
+  --background: #09090b;
+  --foreground: #f4f4f5;
+  --card: rgba(24, 24, 27, 0.78);
+  --card-foreground: #f4f4f5;
+  --primary: #60a5fa;
+  --primary-foreground: #0b1220;
+  --secondary: rgba(39, 39, 42, 0.86);
+  --secondary-foreground: #e4e4e7;
+  --muted: rgba(39, 39, 42, 0.76);
+  --muted-foreground: #a1a1aa;
+  --accent: #a1a1aa;
+  --accent-foreground: #09090b;
+  --border: rgba(212, 212, 216, 0.14);
+  --ring: #60a5fa;
+  --page-tint: rgba(212, 212, 216, 0.028);
+  --page-line: rgba(212, 212, 216, 0.055);
+  --surface-glow: rgba(96, 165, 250, 0.1);
+  --shadow-soft: 0 18px 60px rgba(0, 0, 0, 0.34);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    linear-gradient(180deg, var(--page-tint), transparent 22rem),
+    linear-gradient(90deg, transparent, var(--page-line) 50%, transparent),
+    var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(96, 165, 250, 0.28);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "navigation": {
+    "header": {
+      "logo": "Daniel Bolaños",
+      "menu": "Abrir menú de navegación",
+      "close": "Cerrar menú de navegación",
+      "language": "Cambiar idioma",
+      "theme": "Cambiar tema",
+      "light": "Tema claro",
+      "dark": "Tema oscuro",
+      "system": "Tema del sistema"
+    },
+    "items": {
+      "hero": "Inicio",
+      "about": "Sobre mí",
+      "skills": "Habilidades",
+      "experience": "Experiencia",
+      "projects": "Proyectos"
+    },
+    "footer": {
+      "note": "Portafolio de desarrollador fullstack.",
+      "status": "Construido con Next.js"
+    }
+  },
+  "home": {
+    "eyebrow": "Daniel Bolaños · Desarrollador de software",
+    "title": "Construyo aplicaciones web de calidad, desde la idea hasta una experiencia sólida.",
+    "description": "Desarrollo interfaces cuidadas, servicios backend y flujos de datos con JavaScript, React, Express y bases SQL, poniendo atención en el diseño, la estabilidad y el detalle técnico.",
+    "primaryAction": "Ver experiencia",
+    "primaryHref": "#experience",
+    "secondaryAction": "Cambiar a inglés",
+    "contactAction": "Contactarme",
+    "visualLabel": "Visual técnico con áreas de enfoque del portafolio",
+    "stack": {
+      "next": "Next.js",
+      "typescript": "TypeScript",
+      "node": "Node.js",
+      "data": "PostgreSQL"
+    }
+  }
+}
