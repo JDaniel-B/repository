@@ -13,13 +13,13 @@ const content: HomePreviewContent = {
     header: messages.navigation.header,
     items: [
       { label: messages.navigation.items.hero, href: "#hero" },
+      { label: messages.navigation.items.experience, href: "#experience" },
+      { label: messages.navigation.items.projects, href: "#projects" },
       {
         label: messages.navigation.items.about,
         href: "#about"
       },
-      { label: messages.navigation.items.skills, href: "#skills" },
-      { label: messages.navigation.items.experience, href: "#experience" },
-      { label: messages.navigation.items.projects, href: "#projects" }
+      { label: messages.navigation.items.skills, href: "#skills" }
     ],
     footer: messages.navigation.footer
   },

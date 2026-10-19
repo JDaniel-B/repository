@@ -1,3 +1,5 @@
+import type { Locale } from "@/i18n/routing";
+
 export type ProfileLink = {
   label: string;
   href?: string;
@@ -11,7 +13,7 @@ export type Profile = {
   email?: string;
   emailHref?: string;
   phone?: string;
-  cvHref?: string;
+  cvHref: Record<Locale, string>;
   github?: ProfileLink;
   linkedin?: ProfileLink;
 };
@@ -20,10 +22,14 @@ export const profile: Profile = {
   name: "Daniel Bolaños",
   initials: "DB",
   imageHref: "/yo.jpeg",
+  location: "Guatemala",
   email: "danielbolanos909@gmail.com",
   emailHref:
     "https://mail.google.com/mail/?view=cm&fs=1&to=danielbolanos909@gmail.com",
-  // cvHref: "/cv.pdf",
+  cvHref: {
+    en: "/Daniel_Bolanos_CV_EN.pdf",
+    es: "/Daniel_Bolanos_CV_ES.pdf"
+  },
   github: {
     label: "GitHub",
     href: "https://github.com/JDaniel-B"

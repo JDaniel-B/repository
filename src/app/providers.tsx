@@ -1,6 +1,6 @@
 "use client";
 
-import { domAnimation, LazyMotion } from "framer-motion";
+import { domAnimation, LazyMotion, MotionConfig } from "framer-motion";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 
 type ProvidersProps = Readonly<{
@@ -10,7 +10,9 @@ type ProvidersProps = Readonly<{
 export function Providers({ children }: ProvidersProps) {
   return (
     <ThemeProvider>
-      <LazyMotion features={domAnimation}>{children}</LazyMotion>
+      <LazyMotion features={domAnimation}>
+        <MotionConfig reducedMotion="user">{children}</MotionConfig>
+      </LazyMotion>
     </ThemeProvider>
   );
 }

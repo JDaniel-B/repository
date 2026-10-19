@@ -44,10 +44,10 @@ export default async function HomePage({ params }: HomePageProps) {
       },
       items: [
         { label: tNav("items.hero"), href: "#hero" },
-        { label: tNav("items.about"), href: "#about" },
-        { label: tNav("items.skills"), href: "#skills" },
         { label: tNav("items.experience"), href: "#experience" },
-        { label: tNav("items.projects"), href: "#projects" }
+        { label: tNav("items.projects"), href: "#projects" },
+        { label: tNav("items.about"), href: "#about" },
+        { label: tNav("items.skills"), href: "#skills" }
       ],
       footer: {
         note: tNav("footer.note"),
@@ -62,6 +62,7 @@ export default async function HomePage({ params }: HomePageProps) {
     secondaryAction: t("secondaryAction"),
     secondaryHref: `/${targetLocale}`,
     contactAction: t("contactAction"),
+    cvAction: t("cvAction"),
     visualLabel: t("visualLabel"),
     stack: [
       t("stack.next"),
