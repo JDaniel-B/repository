@@ -1,170 +1,38 @@
-import { CheckCircle2 } from "lucide-react";
-import { MotionCard, Reveal } from "@/components/animation/reveal";
-import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle
-} from "@/components/ui/card";
+import { Reveal } from "@/components/animation/reveal";
 import type { ProfessionalContent } from "@/config/professional-content";
 
-type ProfessionalSectionsProps = Readonly<{
-  content: ProfessionalContent;
-}>;
-
-export function ProfessionalSections({ content }: ProfessionalSectionsProps) {
+export function ExperienceSection({ content }: Readonly<{ content: ProfessionalContent }>) {
   return (
-    <>
-      <Reveal
-        as="section"
-        aria-labelledby="about-title"
-        className="grid gap-8 py-16 lg:grid-cols-[0.8fr_1.2fr]"
-        id="about"
-      >
-        <div>
-          <Badge variant="secondary">{content.about.eyebrow}</Badge>
-          <h2
-            className="sr-only"
-            id="about-title"
-          >
-            {content.about.eyebrow}
-          </h2>
-          <p className="mt-4 max-w-md text-base font-semibold leading-7 text-foreground">
-            {content.about.title}
-          </p>
-        </div>
-        <div className="space-y-5">
-          {content.about.body.map((paragraph) => (
-            <p className="text-base leading-8 text-muted-foreground" key={paragraph}>
-              {paragraph}
-            </p>
-          ))}
-          <div className="grid gap-3 pt-3 sm:grid-cols-3">
-            {content.about.facts.map((fact, index) => (
-              <MotionCard delay={index * 0.05} key={fact.label}>
-                <Card className="h-full border-border/70 bg-card/70 shadow-none">
-                  <CardHeader className="h-full">
-                    <CardDescription>{fact.label}</CardDescription>
-                    <CardTitle className="text-base leading-6">
-                      {fact.value}
-                    </CardTitle>
-                  </CardHeader>
-                </Card>
-              </MotionCard>
+    <Reveal as="section" aria-labelledby="experience-title" className="border-y border-border px-5 py-16 sm:px-8 sm:py-20 lg:px-10" id="experience">
+      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-16">
+          <div><p className="text-sm font-medium text-muted-foreground">{content.experience.eyebrow}</p><h2 id="experience-title" className="mt-2 text-3xl font-semibold tracking-[-0.035em]">{content.experience.title}</h2></div>
+          <div>
+            {content.experience.items.map((item) => (
+              <article key={`${item.role}-${item.company}`}>
+                <div className="grid gap-3 sm:grid-cols-[1fr_auto] sm:items-start sm:gap-8">
+                  <div><h3 className="text-2xl font-semibold tracking-[-0.025em] sm:text-3xl">{item.role}</h3><p className="mt-2 text-sm text-muted-foreground">{item.company}</p></div>
+                  <p className="text-sm font-medium tabular-nums text-muted-foreground">{item.period}</p>
+                </div>
+                <p className="mt-7 max-w-3xl text-base leading-7">{item.summary}</p>
+                <ul className="mt-7 grid gap-4 text-sm leading-6 text-muted-foreground md:grid-cols-3 md:gap-6">
+                  {item.highlights.map((highlight) => <li className="border-t border-border pt-4" key={highlight}>{highlight}</li>)}
+                </ul>
+              </article>
             ))}
           </div>
-        </div>
-      </Reveal>
-
-      <Reveal
-        as="section"
-        aria-labelledby="skills-title"
-        className="py-16"
-        id="skills"
-      >
-        <div className="mb-8 max-w-2xl">
-          <Badge variant="secondary">{content.skills.eyebrow}</Badge>
-          <h2
-            className="sr-only"
-            id="skills-title"
-          >
-            {content.skills.title}
-          </h2>
-          {content.skills.description ? (
-            <p className="mt-4 text-base leading-8 text-muted-foreground">
-              {content.skills.description}
-            </p>
-          ) : null}
-        </div>
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {content.skills.groups.map((group, index) => (
-            <MotionCard delay={index * 0.04} key={group.title}>
-              <Card className="flex h-full flex-col">
-                <CardHeader className="min-h-32">
-                  <CardTitle>{group.title}</CardTitle>
-                  <CardDescription className="max-w-sm">
-                    {group.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="mt-auto">
-                  <div className="flex flex-wrap gap-2">
-                    {group.items.map((item) => (
-                      <span
-                        className="rounded-md border border-border bg-secondary px-2.5 py-1 text-xs font-medium text-secondary-foreground"
-                        key={item}
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </MotionCard>
-          ))}
-        </div>
-      </Reveal>
-
-      <Reveal
-        as="section"
-        aria-labelledby="experience-title"
-        className="py-16"
-        id="experience"
-      >
-        <div className="mb-8 max-w-2xl">
-          <Badge variant="secondary">{content.experience.eyebrow}</Badge>
-          <h2
-            className="sr-only"
-            id="experience-title"
-          >
-            {content.experience.title}
-          </h2>
-          {content.experience.description ? (
-            <p className="mt-4 text-base leading-8 text-muted-foreground">
-              {content.experience.description}
-            </p>
-          ) : null}
-        </div>
-        <div className="space-y-4">
-          {content.experience.items.map((item, index) => (
-            <MotionCard delay={index * 0.05} key={`${item.role}-${item.company}`}>
-              <Card>
-                <CardHeader>
-                  <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-                    <div>
-                      <CardTitle>{item.role}</CardTitle>
-                      <CardDescription className="mt-2">
-                        {item.company}
-                      </CardDescription>
-                    </div>
-                    <Badge variant="outline">{item.period}</Badge>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm leading-7 text-muted-foreground">
-                    {item.summary}
-                  </p>
-                  <ul className="mt-5 grid gap-3">
-                    {item.highlights.map((highlight) => (
-                      <li
-                        className="flex gap-3 text-sm leading-6 text-muted-foreground"
-                        key={highlight}
-                      >
-                        <CheckCircle2
-                          aria-hidden="true"
-                          className="mt-0.5 size-4 shrink-0 text-primary"
-                        />
-                        <span>{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            </MotionCard>
-          ))}
-        </div>
-      </Reveal>
-    </>
+      </div>
+    </Reveal>
   );
+}
+
+export function ProfileSections({ content }: Readonly<{ content: ProfessionalContent }>) {
+  return <>
+    <Reveal as="section" aria-labelledby="about-title" className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-16 lg:px-10" id="about">
+      <div><p className="text-sm font-medium text-muted-foreground">{content.about.eyebrow}</p><h2 id="about-title" className="mt-2 text-3xl font-semibold tracking-[-0.035em]">{content.about.title}</h2></div>
+      <div><div className="grid max-w-4xl gap-5 text-base leading-7 text-muted-foreground md:grid-cols-2">{content.about.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div><dl className="mt-8 grid gap-5 border-t border-border pt-6 text-sm sm:grid-cols-3">{content.about.facts.map((fact) => <div key={fact.label}><dt className="text-muted-foreground">{fact.label}</dt><dd className="mt-1 font-medium">{fact.value}</dd></div>)}</dl></div>
+    </Reveal>
+    <Reveal as="section" aria-labelledby="skills-title" className="border-t border-border px-5 py-16 sm:px-8 sm:py-20 lg:px-10" id="skills">
+      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-16"><div><p className="text-sm font-medium text-muted-foreground">{content.skills.eyebrow}</p><h2 id="skills-title" className="mt-2 text-3xl font-semibold tracking-[-0.035em]">{content.skills.title}</h2></div><div className="grid gap-x-10 gap-y-8 md:grid-cols-2">{content.skills.groups.map((group) => <div key={group.title}><h3 className="font-semibold">{group.title}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{group.description}</p><p className="mt-3 text-sm leading-6">{group.items.join(" · ")}</p></div>)}</div></div>
+    </Reveal>
+  </>;
 }

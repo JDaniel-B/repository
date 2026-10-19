@@ -237,7 +237,7 @@ const projectSources: ProjectSource[] = [
       es: "ERP en producción para venta de repuestos, gestionando productos, existencias, equivalencias, ventas, compras y finanzas."
     },
     problem: {
-      en: "Auto-parts businesses need more than a generic inventory list: they need SKU control, product families, part brands, vehicle applications, equivalent products and financial workflows tied to real sales and purchases.",
+      en: "Auto-parts businesses need SKU control, product families, part brands, vehicle applications, equivalent products and financial workflows tied to real sales and purchases.",
       es: "Los negocios de repuestos necesitan más que un inventario genérico: requieren control de SKU, familias, marcas de repuesto, aplicaciones por vehículo, productos equivalentes y flujos financieros conectados con ventas y compras reales."
     },
     contribution: {

@@ -5,7 +5,7 @@ type LocalizedText = Record<Locale, string>;
 type SkillGroupSource = {
   title: LocalizedText;
   description: LocalizedText;
-  items: string[];
+  items: Array<string | LocalizedText>;
 };
 
 type ExperienceSource = {
@@ -105,6 +105,23 @@ const skillGroups: SkillGroupSource[] = [
       es: "Experiencias multiplataforma cuando el proyecto lo requiere."
     },
     items: ["React Native", "Expo", "Mobile UI"]
+  },
+  {
+    title: {
+      en: "Collaboration",
+      es: "Colaboración"
+    },
+    description: {
+      en: "Team practices that support clear, steady product delivery.",
+      es: "Prácticas de equipo que favorecen una entrega clara y constante."
+    },
+    items: [
+      { en: "Scrum", es: "Scrum" },
+      { en: "Teamwork", es: "Trabajo en equipo" },
+      { en: "Problem solving", es: "Resolución de problemas" },
+      { en: "Technical communication", es: "Comunicación técnica" },
+      { en: "Adaptability", es: "Adaptabilidad" }
+    ]
   }
 ];
 
@@ -119,8 +136,8 @@ const experienceItems: ExperienceSource[] = [
       es: "SOFTLUTIONS - Sistemas Inteligentes"
     },
     period: {
-      en: "Mar 2025 - Present",
-      es: "Mar 2025 - Actualidad"
+      en: "Mar 2025 - Aug 2026",
+      es: "Mar 2025 - Ago 2026"
     },
     summary: {
       en: "Designs, builds, implements and maintains user interfaces for web applications and platforms, focusing on clear, responsive and reliable product experiences.",
@@ -155,11 +172,11 @@ export function getProfessionalContent(locale: Locale): ProfessionalContent {
         locale === "es"
           ? [
               "Soy desarrollador fullstack con experiencia creando aplicaciones web, paneles administrativos, plataformas operativas, servicios backend y bases de datos relacionales.",
-              "En mi trabajo actual me desempeño como frontend, pero también he construido APIs con Express y trabajado con PostgreSQL, MySQL y SQL Server."
+              "Mi experiencia profesional más reciente estuvo enfocada en frontend, y también he construido APIs con Express y trabajado con PostgreSQL, MySQL y SQL Server."
             ]
           : [
               "I am a fullstack developer with experience building web applications, admin dashboards, operational platforms, backend services and relational databases.",
-              "My current role is frontend-focused, but I have also built APIs with Express and worked with PostgreSQL, MySQL and SQL Server."
+              "My most recent role was frontend-focused, and I have also built APIs with Express and worked with PostgreSQL, MySQL and SQL Server."
             ],
       facts: [
         {
@@ -186,7 +203,7 @@ export function getProfessionalContent(locale: Locale): ProfessionalContent {
       groups: skillGroups.map((group) => ({
         title: group.title[locale],
         description: group.description[locale],
-        items: group.items
+        items: group.items.map((item) => typeof item === "string" ? item : item[locale])
       }))
     },
     experience: {

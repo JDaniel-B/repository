@@ -23,13 +23,14 @@
     }
   },
   "home": {
-    "eyebrow": "Daniel Bolaños · Software Developer",
-    "title": "Building quality web applications from idea to polished experience.",
-    "description": "I develop thoughtful interfaces, backend services and data flows with JavaScript, React, Express and SQL databases, with attention to design, stability and technical detail.",
-    "primaryAction": "View experience",
-    "primaryHref": "#experience",
+    "eyebrow": "Daniel Bolaños, Fullstack Developer",
+    "title": "ERPs and APIs,\nfrom UI to data.",
+    "description": "I build end-to-end web products: clear interfaces, Express APIs and solutions backed by SQL databases, with a focus on stability, maintainability and a thoughtful user experience.",
+    "primaryAction": "View selected work",
+    "primaryHref": "#projects",
     "secondaryAction": "Switch to Spanish",
-    "contactAction": "Contact me",
+    "contactAction": "Write to me",
+    "cvAction": "Download CV (PDF)",
     "visualLabel": "Technical visual showing portfolio focus areas",
     "stack": {
       "next": "Next.js",

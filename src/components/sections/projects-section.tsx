@@ -1,101 +1,31 @@
 import Link from "next/link";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
-import { MotionCard, Reveal } from "@/components/animation/reveal";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle
-} from "@/components/ui/card";
+import { Reveal } from "@/components/animation/reveal";
 import type { ProjectsContent } from "@/config/projects-content";
 
-type ProjectsSectionProps = Readonly<{
-  content: ProjectsContent;
-}>;
-
-export function ProjectsSection({ content }: ProjectsSectionProps) {
+export function ProjectsSection({ content }: Readonly<{ content: ProjectsContent }>) {
   return (
-    <Reveal
-      as="section"
-      aria-labelledby="projects-title"
-      className="py-16"
-      id="projects"
-    >
-      <div className="mb-8">
-        <Badge variant="secondary">{content.eyebrow}</Badge>
-        <h2 className="sr-only" id="projects-title">
-          {content.title}
-        </h2>
-      </div>
-
-      <div className="grid gap-3 lg:grid-cols-2">
-        {content.items.map((project, index) => (
-          <MotionCard delay={index * 0.05} key={project.slug}>
-            <Card className="group flex h-full flex-col overflow-hidden border-border/70 bg-card/70 shadow-none transition-colors hover:border-primary/45">
-              <CardHeader className="gap-5 p-5">
-                <div className="flex items-start justify-between gap-4">
-                  <p className="flex flex-wrap gap-x-2 gap-y-1 text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
-                    <span>{project.category}</span>
-                    <span>{project.year}</span>
-                  </p>
-                  <span
-                    aria-hidden="true"
-                    className="inline-flex size-8 shrink-0 items-center justify-center rounded-md border border-border bg-background/60 text-muted-foreground transition-colors group-hover:border-primary/45 group-hover:text-primary"
-                  >
-                    <ArrowUpRight className="size-4" />
-                  </span>
+    <Reveal as="section" aria-labelledby="projects-title" className="px-5 py-16 sm:px-8 sm:py-20 lg:px-10" id="projects">
+      <div className="mx-auto max-w-6xl">
+        <div className="grid gap-5 border-b border-border pb-8 lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-16">
+          <h2 id="projects-title" className="text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">{content.title}</h2>
+          <p className="max-w-2xl text-base leading-7 text-muted-foreground lg:pt-1">{content.locale === "es" ? "Sistemas reales para operaciones, inventario, finanzas y gestión." : "Real systems for operations, inventory, finance and administration."}</p>
+        </div>
+        <div>
+          {content.items.map((project) => (
+            <article className="group grid gap-5 border-b border-border py-8 md:grid-cols-[minmax(12rem,0.65fr)_minmax(0,1.35fr)] md:gap-10" key={project.slug}>
+              <div><p className="text-sm text-muted-foreground">{project.category} · {project.year}</p><h3 className="mt-2 text-2xl font-semibold tracking-[-0.025em] sm:text-3xl">{project.title}</h3></div>
+              <div>
+                <p className="max-w-2xl text-base leading-7">{project.shortDescription}</p>
+                <p className="mt-4 max-w-2xl text-sm leading-6 text-muted-foreground">{project.technologies.slice(0, 7).join(" · ")}</p>
+                <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold">
+                  <Link className="inline-flex min-h-11 items-center gap-2 underline decoration-current/30 transition-colors duration-200 hover:text-primary hover:decoration-current" href={content.locale === "es" ? `/es/projects/${project.slug}` : `/projects/${project.slug}`}>{content.caseStudyLabel}<ArrowUpRight aria-hidden="true" className="size-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></Link>
+                  {project.liveHref ? <a className="inline-flex min-h-11 items-center gap-2 underline decoration-current/30 transition-colors duration-200 hover:text-primary hover:decoration-current" href={project.liveHref} target="_blank" rel="noreferrer">{content.liveLabel}<ExternalLink aria-hidden="true" className="size-4" /></a> : null}
                 </div>
-                <div>
-                  <CardTitle className="text-xl leading-tight tracking-tight">
-                    {project.title}
-                  </CardTitle>
-                  <p className="mt-3 max-w-2xl text-sm leading-7 text-muted-foreground">
-                    {project.shortDescription}
-                  </p>
-                </div>
-              </CardHeader>
-
-              <CardContent className="flex flex-1 flex-col gap-5 p-5 pt-0">
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.slice(0, 4).map((technology) => (
-                    <span
-                      className="rounded-sm border border-border/80 px-2 py-1 text-xs font-medium text-muted-foreground"
-                      key={technology}
-                    >
-                      {technology}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="mt-auto flex flex-wrap gap-2 border-t border-border/70 pt-5">
-                  <Button asChild size="sm" variant="secondary">
-                    <Link
-                      href={
-                        content.locale === "es"
-                          ? `/es/projects/${project.slug}`
-                          : `/projects/${project.slug}`
-                      }
-                    >
-                      {content.caseStudyLabel}
-                      <ArrowUpRight aria-hidden="true" className="size-4" />
-                    </Link>
-                  </Button>
-
-                  {project.liveHref ? (
-                    <Button asChild size="sm" variant="ghost">
-                      <a href={project.liveHref} rel="noreferrer" target="_blank">
-                        {content.liveLabel}
-                        <ExternalLink aria-hidden="true" className="size-4" />
-                      </a>
-                    </Button>
-                  ) : null}
-                </div>
-              </CardContent>
-            </Card>
-          </MotionCard>
-        ))}
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </Reveal>
   );
