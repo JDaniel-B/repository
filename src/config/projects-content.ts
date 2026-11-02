@@ -376,6 +376,79 @@ const projectSources: ProjectSource[] = [
     featured: true,
     liveHref: "https://www.amac.org.gt/",
     repositoryPrivate: true
+  },
+  {
+    slug: "notification-service",
+    title: { en: "Notification Service", es: "Notification Service" },
+    category: {
+      en: "Multi-tenant transactional email platform",
+      es: "Plataforma multi-tenant de correo transaccional"
+    },
+    shortDescription: {
+      en: "Centralized email delivery with isolated application credentials, templates, senders and operational administration.",
+      es: "Envío centralizado de correos con credenciales aisladas por aplicación, plantillas, remitentes y administración operativa."
+    },
+    problem: {
+      en: "Multiple business systems maintained separate SMTP credentials and email logic, making security, auditing, domain changes and delivery standards difficult to manage consistently.",
+      es: "Varios sistemas mantenían credenciales SMTP y lógica de correo por separado, dificultando administrar consistentemente la seguridad, auditoría, cambios de dominio y estándares de entrega."
+    },
+    contribution: {
+      en: "Designed and built a TypeScript platform with a hardened Express API, PostgreSQL multi-tenancy, per-application API keys, Resend templates and a protected Next.js administration console.",
+      es: "Diseño y construcción de una plataforma TypeScript con API Express reforzada, multi-tenancy en PostgreSQL, API keys por aplicación, plantillas en Resend y consola administrativa protegida en Next.js."
+    },
+    highlights: [
+      {
+        en: "Scoped credentials for Taller Bolaños, AMAC, Mazari and CN Repuestos without exposing the Resend provider key.",
+        es: "Credenciales limitadas para Taller Bolaños, AMAC, Mazari y CN Repuestos sin exponer la clave del proveedor Resend."
+      },
+      {
+        en: "Reusable flows for password invitations, password resets and contact or membership forms.",
+        es: "Flujos reutilizables para invitaciones de contraseña, restablecimiento y formularios de contacto o membresía."
+      },
+      {
+        en: "Administration for tenants, applications, senders, templates, API keys and audit events.",
+        es: "Administración de tenants, aplicaciones, remitentes, plantillas, API keys y eventos de auditoría."
+      }
+    ],
+    architecture: [
+      {
+        en: "Express API deployed as a non-root Docker image behind Traefik, with health checks, rate limiting and idempotent dispatches.",
+        es: "API Express desplegada en una imagen Docker sin root detrás de Traefik, con health checks, rate limiting y envíos idempotentes."
+      },
+      {
+        en: "PostgreSQL stores tenant boundaries, hashed API credentials, provider mappings, quotas and dispatch history.",
+        es: "PostgreSQL almacena límites por tenant, credenciales API hasheadas, mapeos del proveedor, cuotas e historial de envíos."
+      },
+      {
+        en: "Next.js administration uses Better Auth and keeps provider secrets exclusively in the API service.",
+        es: "La administración en Next.js usa Better Auth y mantiene los secretos del proveedor exclusivamente en la API."
+      }
+    ],
+    technologies: [
+      "TypeScript",
+      "Node.js",
+      "Express",
+      "Next.js",
+      "PostgreSQL",
+      "Prisma",
+      "Better Auth",
+      "Resend",
+      "Docker",
+      "Dokploy",
+      "Vercel"
+    ],
+    metrics: [
+      { label: { en: "Tenancy", es: "Tenancy" }, value: "Multi-tenant" },
+      { label: { en: "Consumers", es: "Consumidores" }, value: "4 systems" },
+      { label: { en: "Status", es: "Estado" }, value: "Pre-production" }
+    ],
+    year: "2026",
+    status: {
+      en: "Pre-production platform",
+      es: "Plataforma en preproducción"
+    },
+    featured: true,
+    repositoryHref: "https://github.com/JDaniel-B/notification-services"
   }
 ];
 
